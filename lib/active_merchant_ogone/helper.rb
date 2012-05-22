@@ -28,6 +28,8 @@ module ActiveMerchant #:nodoc:
                              
           mapping :language, 'language'
           mapping :template, 'tp'
+          mapping :payment_type,  'pm'
+          mapping :payment_brand, 'brand'
                              
           def customer(mapping = {})
             add_field('ownertelno', mapping[:phone])
