@@ -38,6 +38,7 @@ module ActiveMerchant #:nodoc:
             add_field('CIVILITY', mapping[:civility])
           end
           
+          # AfterPay
           def after_pay(mapping = {})
             # Billing adres
             add_field('ECOM_BILLTO_POSTAL_NAME_FIRST', mapping[:bill_first_name])
@@ -52,6 +53,17 @@ module ActiveMerchant #:nodoc:
             add_field('ECOM_SHIPTO_POSTAL_CITY', mapping[:ship_adress_city])
             add_field('ECOM_SHIPTO_POSTAL_COUNTRYCODE', mapping[:ship_adress_country_code])
             add_field('ECOM_SHIPTO_DOB', mapping[:ship_dob])
+          end
+          # Line Items (AfterPay)
+          def after_pay_lineitems(items = [])
+            items.each_with_index do |line, index|
+              add_field("ITEMID#{index+1}", line.id)
+              add_field("ITEMNAME#{index+1}", line.name)
+              add_field("ITEMPRICE#{index+1}", line.price)
+              add_field("ITEMQUANT#{index+1}", line.quantity)
+              add_field("ITEMVATCODE#{index+1}", line.vat_code)
+              add_field("TAXINCLUDED#{index+1}", line.tax_included)
+            end
           end
           
           def operation operation

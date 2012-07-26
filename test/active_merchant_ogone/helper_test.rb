@@ -22,7 +22,7 @@ class OgoneHelperTest < Test::Unit::TestCase
     assert_field 'CIVILITY', 'M'
   end
   
-  def test_afterpay_fields
+  def test_after_pay_fields
     @helper.after_pay :bill_first_name => 'Nick',
                       :bill_last_name => 'den Engelsman',
                       :bill_street_number => '1098',
@@ -47,6 +47,25 @@ class OgoneHelperTest < Test::Unit::TestCase
     assert_field 'ECOM_SHIPTO_POSTAL_CITY', 'Den Haag'
     assert_field 'ECOM_SHIPTO_POSTAL_COUNTRYCODE', 'NL'
     assert_field 'ECOM_SHIPTO_DOB', '23/04/1987' 
+  end
+  
+  def test_after_pay_lineitems_fields
+    @helper.lineitems [{:id => "1234",:name => "Test product 1",:price => "2.00",:quantity => "1",:vat_code => "19%",:tax_included => "1"},
+      {:id => "1235",:name => "Test product 2",:price => "1.00",:quantity => "1",:vat_code => "19%",:tax_included => "1"}]
+    # Line item 1
+    assert_field 'ITEMID1', '1234'
+    assert_field 'ITEMNAME1', 'Test product 1'
+    assert_field 'ITEMPRICE1', '2.00'
+    assert_field 'ITEMQUANT1', '1'
+    assert_field 'ITEMVATCODE1', '19%'
+    assert_field 'TAXINCLUDED1', '1'
+    # Line item 2
+    assert_field 'ITEMID2', '1235'
+    assert_field 'ITEMNAME2', 'Test product 2'
+    assert_field 'ITEMPRICE2', '1.00'
+    assert_field 'ITEMQUANT2', '1'
+    assert_field 'ITEMVATCODE2', '19%'
+    assert_field 'TAXINCLUDED2', '1'
   end
   
   def test_operation
