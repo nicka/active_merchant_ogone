@@ -9,7 +9,7 @@ module ActiveMerchant #:nodoc:
           mapping :account,  'PSPID'
           mapping :amount,   'amount'
           mapping :currency, 'currency'
-
+       
           # optional - TODO
           mapping :billing_address, :city     => 'ownertown',
                                     :address1 => 'owneraddress',
@@ -25,7 +25,8 @@ module ActiveMerchant #:nodoc:
                              :declineurl   => 'declineurl',
                              :cancelurl    => 'cancelurl',
                              :exceptionurl => 'exceptionurl'
-                             
+          
+          mapping :date_in,  'DATEIN'   
           mapping :language, 'language'
           mapping :template, 'tp'
           mapping :payment_type,  'pm'

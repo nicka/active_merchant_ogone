@@ -9,7 +9,6 @@ class OgoneHelperTest < Test::Unit::TestCase
 
   def test_basic_helper_fields
     assert_field 'PSPID', 'openminds'
-
     assert_field 'orderID', 'order-500'
     assert_field 'amount', '900'
     assert_field 'currency', 'EUR'
