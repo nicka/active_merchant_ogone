@@ -52,19 +52,19 @@ class OgoneHelperTest < Test::Unit::TestCase
     @helper.lineitems [{:id => "1234",:name => "Test product 1",:price => "2.00",:quantity => "1",:vat_code => "19%",:tax_included => "1"},
       {:id => "1235",:name => "Test product 2",:price => "1.00",:quantity => "1",:vat_code => "19%",:tax_included => "1"}]
     # Line item 1
-    assert_field 'ITEMID1', '1234'
-    assert_field 'ITEMNAME1', 'Test product 1'
-    assert_field 'ITEMPRICE1', '2.00'
-    assert_field 'ITEMQUANT1', '1'
-    assert_field 'ITEMVATCODE1', '19%'
-    assert_field 'TAXINCLUDED1', '1'
+    assert_field 'ITEMID01', '1234'
+    assert_field 'ITEMNAME01', 'Test product 1'
+    assert_field 'ITEMPRICE01', '2.00'
+    assert_field 'ITEMQUANT01', '1'
+    assert_field 'ITEMVATCODE01', '19%'
+    assert_field 'TAXINCLUDED01', '1'
     # Line item 2
-    assert_field 'ITEMID2', '1235'
-    assert_field 'ITEMNAME2', 'Test product 2'
-    assert_field 'ITEMPRICE2', '1.00'
-    assert_field 'ITEMQUANT2', '1'
-    assert_field 'ITEMVATCODE2', '19%'
-    assert_field 'TAXINCLUDED2', '1'
+    assert_field 'ITEMID02', '1235'
+    assert_field 'ITEMNAME02', 'Test product 2'
+    assert_field 'ITEMPRICE02', '1.00'
+    assert_field 'ITEMQUANT02', '1'
+    assert_field 'ITEMVATCODE02', '19%'
+    assert_field 'TAXINCLUDED02', '1'
   end
   
   def test_operation
