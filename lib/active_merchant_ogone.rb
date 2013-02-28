@@ -1,6 +1,7 @@
 # Ogone Integration developed by Openminds (www.openminds.be)
 # For problems contact us at ogone@openminds.be
 require 'active_merchant'
+require 'natural_sort_kernel'
 require 'active_merchant_ogone/helper.rb'
 require 'active_merchant_ogone/notification.rb'
 
@@ -42,7 +43,7 @@ module ActiveMerchant #:nodoc:
         def self.outbound_message_signature(fields, signature=nil)
           signature ||= self.outbound_signature
           datastring = fields.select {|k, v| !v.blank? }.
-                              sort_by {|k, v| k.upcase }.
+                              natural_sort.
                               collect{|key, value| "#{key.upcase}=#{value}#{signature}"}.join
                               
           Digest::SHA1.hexdigest(datastring).upcase
@@ -52,6 +53,7 @@ module ActiveMerchant #:nodoc:
           signature ||= self.inbound_signature
           datastring = fields.select  {|k, v| !v.blank? && INBOUND_ENCRYPTED_VARIABLES.include?(k.upcase) }.
                               sort_by {|k, v| INBOUND_ENCRYPTED_VARIABLES.index(k.upcase) }.
+                              natural_sort.
                               collect {|key, value| "#{key.upcase}=#{value}#{signature}"}.join
                              
           Digest::SHA1.hexdigest(datastring).upcase

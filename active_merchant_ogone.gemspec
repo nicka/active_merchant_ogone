@@ -54,5 +54,6 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<activemerchant>, [">= 1.4.2"])
   end
+  s.add_dependency('naturalsort', '~> 1.1.1')
 end
 
